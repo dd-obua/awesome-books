@@ -33,13 +33,17 @@ const addBook = (title, author) => {
       author: inputAuthor.value,
     });
 
-    console.log(bookList);
     displayBookList(bookList);
   } catch (error) {
     console.error(error);
   } finally {
     clearInput();
   }
+};
+
+const removeBook = (index) => {
+  bookList.splice(index, 1);
+  displayBookList(bookList);
 };
 
 const clearContent = () => (bookListElem.innerHTML = '');
@@ -49,19 +53,26 @@ const displayBookList = (list) => {
   clearContent();
 
   const bookMarkup = list
-    .map(
-      (book, index) =>
-        `
-          <li>
-            <p>${book.title}</p>
-            <p>${book.author}</p>
-            <button class="remove-btn" data-index="${index}">Remove</button>
-          </li>
-        `
-    )
+    .map((book, index) => {
+      book.index = index;
+      return `
+        <li>
+          <p>${book.title}</p>
+          <p>${book.author}</p>
+          <button class="remove-btn" data-index="${index}">Remove</button>
+        </li>
+      `;
+    })
     .join('');
 
   bookListElem.insertAdjacentHTML('beforeend', bookMarkup);
 };
+
+bookListElem.addEventListener('click', (event) => {
+  const removeBtn = event.target.closest('.remove-btn');
+  if (!removeBtn) return;
+  const index = removeBtn.dataset.index;
+  removeBook(index);
+});
 
 btnSubmit.addEventListener('click', addBook);
