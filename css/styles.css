@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Arial;
+  font-size: 1.6rem;
+}
+
+li {
+  border-bottom: 1px solid #555;
+  padding: 1.2rem 0;
+}
+
+p {
+  padding: 0.4rem 0;
+}
+
+input {
+  display: block;
+  margin: 1.2rem 0;
+  padding: 0.4em 0.8rem;
+}
+
+button {
+  padding: 0.4rem 1.2rem;
+  font-size: 1.4rem;
+}
+
+input {
+  font-size: 1.5rem;
+}
