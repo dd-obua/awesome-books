@@ -7,7 +7,7 @@ const inputAuthor = select('.author');
 const btnSubmit = select("button[type='submit']");
 const bookListElem = select('.book-list');
 
-const bookList = [];
+const bookList = JSON.parse(localStorage.getItem('books')) || [];
 
 const alreadyAdded = () => {
   return (
@@ -33,6 +33,7 @@ const addBook = (title, author) => {
       author: inputAuthor.value,
     });
 
+    localStorage.setItem('books', JSON.stringify(bookList));
     displayBookList(bookList);
   } catch (error) {
     console.error(error);
@@ -76,3 +77,5 @@ bookListElem.addEventListener('click', (event) => {
 });
 
 btnSubmit.addEventListener('click', addBook);
+
+displayBookList(bookList);
