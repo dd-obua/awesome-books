@@ -3,21 +3,14 @@ class Book {
   _inputAuthor = this._select('.author');
   _btnSubmit = this._select("button[type='submit']");
   _bookListElem = this._select('.book-list');
-
   _sectionSpecifier = this._select('.section-selector');
-  _sectionBookList = this._select('.section-book-list');
-  _sectionAddBook = this._select('.section-add-book');
-  _sectionContactInfo = this._select('.section-contact-info');
 
   _bookList = JSON.parse(localStorage.getItem('books')) || [];
 
   constructor() {
     this._displayBookList(this._bookList);
-
     this._bookListElem.addEventListener('click', this._removeBookUI.bind(this));
-
     this._btnSubmit.addEventListener('click', this._addNewBook.bind(this));
-
     this._sectionSpecifier.addEventListener('click', this._switchDisplay.bind(this));
   }
 
