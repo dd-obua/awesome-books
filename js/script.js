@@ -12,7 +12,11 @@ const bookList = JSON.parse(localStorage.getItem('books')) || [];
 const alreadyAdded = () => {
   return (
     bookList.length > 0 &&
-    bookList.some((book) => book.title === inputTitle.value && book.author === inputAuthor.value)
+    bookList.some(
+      (book) =>
+        book.title.toLowerCase() === inputTitle.value.toLowerCase() &&
+        book.author.toLowerCase() === inputAuthor.value.toLowerCase()
+    )
   );
 };
 
