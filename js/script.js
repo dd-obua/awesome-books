@@ -14,12 +14,7 @@ class Book {
   constructor() {
     this._displayBookList(this._bookList);
 
-    this._bookListElem.addEventListener('click', (event) => {
-      const btnRemove = event.target.closest('.btn-remove');
-      if (!btnRemove) return;
-      const id = btnRemove.dataset.index;
-      this._removeBook(id);
-    });
+    this._bookListElem.addEventListener('click', this._removeBookUI.bind(this));
 
     this._btnSubmit.addEventListener('click', this._addNewBook.bind(this));
 
@@ -68,6 +63,13 @@ class Book {
   _removeBook(index) {
     this._bookList.splice(index, 1);
     this._displayBookList(this._bookList);
+  }
+
+  _removeBookUI(event) {
+    const btnRemove = event.target.closest('.btn-remove');
+    if (!btnRemove) return;
+    const id = btnRemove.dataset.index;
+    this._removeBook(id);
   }
 
   _clearContent() {
