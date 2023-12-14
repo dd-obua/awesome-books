@@ -4,6 +4,8 @@ class Book {
   _btnSubmit = this._select("button[type='submit']");
   _bookListElem = this._select('.book-list');
   _sectionSpecifier = this._select('.section-selector');
+  _timeContainer = this._select('.time');
+  _updateTime;
 
   _bookList = JSON.parse(localStorage.getItem('books')) || [];
 
@@ -12,6 +14,10 @@ class Book {
     this._bookListElem.addEventListener('click', this._removeBookUI.bind(this));
     this._btnSubmit.addEventListener('click', this._addNewBook.bind(this));
     this._sectionSpecifier.addEventListener('click', this._switchDisplay.bind(this));
+    this._updateTime = this._timeContainer.innerHTML = this._displayTime();
+    this._updateTime = setInterval(() => {
+      this._timeContainer.innerHTML = this._displayTime();
+    }, 1000);
   }
 
   _select(selector) {
@@ -96,6 +102,25 @@ class Book {
     const id = link.firstElementChild.getAttribute('href');
     this._removeSections();
     this._select(id).classList.remove('hidden');
+  }
+
+  _displayTime() {
+    const currentDate = new Date();
+    // prettier-ignore
+    const months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+    const monthIndex = currentDate.getMonth();
+    const dayOfMonth = currentDate.getDate();
+    const year = currentDate.getFullYear();
+    const hours = currentDate.getHours();
+    const standardHours = hours < 13 ? hours : hours % 12;
+    const minutes = currentDate.getMinutes();
+    const seconds = currentDate.getSeconds();
+    const time = `${standardHours}:${minutes}:${seconds}`;
+    const amOrPm = hours < 13 ? 'am' : 'pm';
+    return `${months[monthIndex]} ${dayOfMonth}th ${year}, ${time} ${amOrPm}`;
   }
 }
 
