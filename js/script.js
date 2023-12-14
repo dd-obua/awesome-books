@@ -20,29 +20,22 @@ const alreadyAdded = () => {
   );
 };
 
-const clearInput = () => {
+const clearInputs = () => {
   inputTitle.value = '';
   inputAuthor.value = '';
 };
 
-const addBook = (title, author) => {
+const addNewBook = () => {
   try {
     const empty = inputTitle.value === '' || inputAuthor.value === '';
-    if (empty) throw new Error("Both title and author can't be empty.");
-
-    if (alreadyAdded()) throw new Error('Book already added');
-
-    bookList.push({
-      title: inputTitle.value,
-      author: inputAuthor.value,
-    });
-
-    localStorage.setItem('books', JSON.stringify(bookList));
+    if (empty) throw new Error('Both title and author cannot be empty.');
+    if (alreadyAdded()) throw new Error('Book already added.');
+    bookList.push({ title: inputTitle.value, author: inputAuthor.value });
     displayBookList(bookList);
   } catch (error) {
     console.error(error);
   } finally {
-    clearInput();
+    clearInputs();
   }
 };
 
@@ -80,6 +73,6 @@ bookListElem.addEventListener('click', (event) => {
   removeBook(index);
 });
 
-btnSubmit.addEventListener('click', addBook);
+btnSubmit.addEventListener('click', addNewBook);
 
 displayBookList(bookList);
