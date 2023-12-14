@@ -47,7 +47,7 @@ class Book {
       localStorage.setItem('books', JSON.stringify(this._bookList));
       this._displayBookList(this._bookList);
     } catch (error) {
-      console.error(error);
+      alert(error);
     } finally {
       this._clearInputs();
     }
