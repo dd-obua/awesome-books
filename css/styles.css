@@ -14,21 +14,33 @@ body {
   font-size: 1.6rem;
 }
 
-ul {
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color: #333;
+}
+
+a:visited {
+  color: #565677;
+}
+
+.book-list {
   margin: 0 auto;
   border: 2px solid #444;
   width: 60%;
   margin-bottom: 3.6rem;
 }
 
-li {
+.book-list li {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 2.4rem;
 }
 
-li:nth-child(odd) {
+.book-list li:nth-child(odd) {
   background: #ccc;
 }
 
@@ -39,22 +51,7 @@ p {
 h1,
 h2 {
   text-align: center;
-}
-
-h1 {
-  margin: 1.6rem;
-}
-
-hr {
-  width: 10%;
-  margin: 0 auto;
-  height: 3px;
-  border: none;
-  background: #333;
-}
-
-h2 {
-  margin-top: 2.4rem;
+  margin: 2.4rem 0;
 }
 
 form {
@@ -84,4 +81,55 @@ button[type='submit'] {
 
 input {
   font-size: 1.5rem;
+}
+
+.section-contact-information {
+  width: 40%;
+  margin: 0 auto;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 4.8rem;
+  position: relative;
+  font-size: 2rem;
+  border: 2px solid #333;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+}
+
+nav ul li {
+  padding: 0 1.2rem;
+  list-style: none;
+}
+
+nav ul li:not(:last-child) {
+  border-right: 2px solid #333;
+}
+
+.time {
+  position: absolute;
+  right: 2.4rem;
+}
+
+.section-contact-information h2 {
+  margin-bottom: 2.4rem;
+}
+
+.section-contact-information ul {
+  margin-left: 3.6rem;
+  font-style: normal;
+}
+
+footer {
+  border: 2px solid #333;
+  padding: 1.2rem;
+  margin-top: 2.4rem;
 }

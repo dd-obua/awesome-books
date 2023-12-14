@@ -8,16 +8,47 @@
     <script defer src="./js/script.js"></script>
   </head>
   <body>
-    <h1>All Awesome Books</h1>
-    <ul class="book-list">
-      <!-- Add books -->
-    </ul>
-    <hr />
-    <h2>Add a new book</h2>
-    <form action="#">
-      <input type="text" placeholder="Title" class="title" />
-      <input type="text" placeholder="Author" class="author" />
-      <button type="submit">Add</button>
-    </form>
+    <header>
+      <nav>
+        <p>Awesome boooks</p>
+        <ul>
+          <li><a href="#">List</a></li>
+          <li><a href="#">Add new</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <p class="time">March 19th 2021, 9:25:32 am</p>
+    </header>
+    <section class="section-display-book-list">
+      <h1>All Awesome Books</h1>
+      <ul class="book-list">
+        <!-- Add books -->
+      </ul>
+    </section>
+    <section class="section-add-book">
+      <h2>Add a new book</h2>
+      <form action="#">
+        <input type="text" placeholder="Title" class="title" />
+        <input type="text" placeholder="Author" class="author" />
+        <button type="submit">Add</button>
+      </form>
+    </section>
+    <section class="section-contact-information">
+      <h2>Contact Information</h2>
+      <p>
+        Do have any questions or you just want to say "Hello"?
+        <span>You can reach out to us.</span>
+      </p>
+      <address>
+        <ul>
+          <li>Our e-mail:mail@mail.com</li>
+          <li>Our phone number: 0043586534422</li>
+          <li>Our address: Streetname 22, 84503 City, Country</li>
+        </ul>
+      </address>
+    </section>
+    <footer>
+      <p>Copyright ...</p>
+    </footer>
   </body>
 </html>
