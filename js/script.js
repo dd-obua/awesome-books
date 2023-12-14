@@ -31,6 +31,7 @@ const addNewBook = () => {
     if (empty) throw new Error('Both title and author cannot be empty.');
     if (alreadyAdded()) throw new Error('Book already added.');
     bookList.push({ title: inputTitle.value, author: inputAuthor.value });
+    localStorage.setItem('books', JSON.stringify(bookList));
     displayBookList(bookList);
   } catch (error) {
     console.error(error);
@@ -64,10 +65,10 @@ const displayBookList = (list) => {
 };
 
 bookListElem.addEventListener('click', (event) => {
-  const removeBtn = event.target.closest('.remove-btn');
-  if (!removeBtn) return;
-  const index = removeBtn.dataset.index;
-  removeBook(index);
+  const btnRemove = event.target.closest('.btn-remove');
+  if (!btnRemove) return;
+  const id = btnRemove.dataset.index;
+  removeBook(id);
 });
 
 btnSubmit.addEventListener('click', addNewBook);
