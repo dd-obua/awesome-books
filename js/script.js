@@ -68,9 +68,8 @@ class Book {
         book.id = index;
         return `
           <li>
-            <p>${book.title}</p>
-            <p>${book.author}</p>
-            <button class="btn-remove" data-index="${index}">Remove</button>
+            <p>"${book.title}" by ${book.author}</p>
+            <p><button class="btn-remove" data-index="${index}">Remove</button></p>
           </li>
         `;
       })
