@@ -1,76 +1,83 @@
-'use strict';
+class Book {
+  _inputTitle = this._select('.title');
+  _inputAuthor = this._select('.author');
+  _btnSubmit = this._select("button[type='submit']");
+  _bookListElem = this._select('.book-list');
+  _bookList = JSON.parse(localStorage.getItem('books')) || [];
 
-const select = (selector) => document.querySelector(selector);
+  constructor() {
+    this._displayBookList(this._bookList);
 
-const inputTitle = select('.title');
-const inputAuthor = select('.author');
-const btnSubmit = select("button[type='submit']");
-const bookListElem = select('.book-list');
+    this._bookListElem.addEventListener('click', (event) => {
+      const btnRemove = event.target.closest('.btn-remove');
+      if (!btnRemove) return;
+      const id = btnRemove.dataset.index;
+      this._removeBook(id);
+    });
 
-const bookList = JSON.parse(localStorage.getItem('books')) || [];
-
-const alreadyAdded = () => {
-  return (
-    bookList.length > 0 &&
-    bookList.some(
-      (book) =>
-        book.title.toLowerCase() === inputTitle.value.toLowerCase() &&
-        book.author.toLowerCase() === inputAuthor.value.toLowerCase()
-    )
-  );
-};
-
-const clearInputs = () => {
-  inputTitle.value = '';
-  inputAuthor.value = '';
-};
-
-const addNewBook = () => {
-  try {
-    const empty = inputTitle.value === '' || inputAuthor.value === '';
-    if (empty) throw new Error('Both title and author cannot be empty.');
-    if (alreadyAdded()) throw new Error('Book already added.');
-    bookList.push({ title: inputTitle.value, author: inputAuthor.value });
-    localStorage.setItem('books', JSON.stringify(bookList));
-    displayBookList(bookList);
-  } catch (error) {
-    console.error(error);
-  } finally {
-    clearInputs();
+    this._btnSubmit.addEventListener('click', this._addNewBook.bind(this));
   }
-};
 
-const removeBook = (index) => {
-  bookList.splice(index, 1);
-  displayBookList(bookList);
-};
+  _select(selector) {
+    return document.querySelector(selector);
+  }
 
-const clearContent = () => (bookListElem.innerHTML = '');
+  _alreadyAdded() {
+    return (
+      this._bookList.length > 0 &&
+      this._bookList.some(
+        (book) =>
+          book.title.toLowerCase() === this._inputTitle.value.toLowerCase() &&
+          book.author.toLowerCase() === this._inputAuthor.value.toLowerCase()
+      )
+    );
+  }
 
-const displayBookList = (list) => {
-  const listMarkup = list
-    .map((book, index) => {
-      book.id = index;
-      return `
-        <li>
-          <p>${book.title}</p>
-          <p>${book.author}</p>
-          <button class="btn-remove" data-index="${index}">Remove</button>
-        </li>
-      `;
-    })
-    .join('');
-  bookListElem.innerHTML = '';
-  bookListElem.insertAdjacentHTML('beforeend', listMarkup);
-};
+  _clearInputs() {
+    this._inputTitle.value = '';
+    this._inputAuthor.value = '';
+  }
 
-bookListElem.addEventListener('click', (event) => {
-  const btnRemove = event.target.closest('.btn-remove');
-  if (!btnRemove) return;
-  const id = btnRemove.dataset.index;
-  removeBook(id);
-});
+  _addNewBook() {
+    try {
+      const empty = this._inputTitle.value === '' || this._inputAuthor.value === '';
+      if (empty) throw new Error('Both title and author cannot be empty.');
+      if (this._alreadyAdded()) throw new Error('Book already added.');
+      this._bookList.push({ title: this._inputTitle.value, author: this._inputAuthor.value });
+      localStorage.setItem('books', JSON.stringify(this._bookList));
+      this._displayBookList(this._bookList);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      this._clearInputs();
+    }
+  }
 
-btnSubmit.addEventListener('click', addNewBook);
+  _removeBook(index) {
+    this._bookList.splice(index, 1);
+    this._displayBookList(this._bookList);
+  }
 
-displayBookList(bookList);
+  _clearContent() {
+    this._bookListElem.innerHTML = '';
+  }
+
+  _displayBookList(list) {
+    const listMarkup = list
+      .map((book, index) => {
+        book.id = index;
+        return `
+          <li>
+            <p>${book.title}</p>
+            <p>${book.author}</p>
+            <button class="btn-remove" data-index="${index}">Remove</button>
+          </li>
+        `;
+      })
+      .join('');
+    this._bookListElem.innerHTML = '';
+    this._bookListElem.insertAdjacentHTML('beforeend', listMarkup);
+  }
+}
+
+new Book();
