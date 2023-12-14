@@ -47,23 +47,20 @@ const removeBook = (index) => {
 const clearContent = () => (bookListElem.innerHTML = '');
 
 const displayBookList = (list) => {
-  if (list.length < 0) return;
-  clearContent();
-
-  const bookMarkup = list
+  const listMarkup = list
     .map((book, index) => {
-      book.index = index;
+      book.id = index;
       return `
         <li>
           <p>${book.title}</p>
           <p>${book.author}</p>
-          <button class="remove-btn" data-index="${index}">Remove</button>
+          <button class="btn-remove" data-index="${index}">Remove</button>
         </li>
       `;
     })
     .join('');
-
-  bookListElem.insertAdjacentHTML('beforeend', bookMarkup);
+  bookListElem.innerHTML = '';
+  bookListElem.insertAdjacentHTML('beforeend', listMarkup);
 };
 
 bookListElem.addEventListener('click', (event) => {
