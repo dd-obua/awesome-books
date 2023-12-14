@@ -11,21 +11,21 @@
     <header>
       <nav>
         <p>Awesome boooks</p>
-        <ul>
-          <li><a href="#">List</a></li>
-          <li><a href="#">Add new</a></li>
-          <li><a href="#">Contact</a></li>
+        <ul class="section-selector">
+          <li><a href="#section-book-list">List</a></li>
+          <li><a href="#section-add-book">Add new</a></li>
+          <li><a href="#section-contact-info">Contact</a></li>
         </ul>
       </nav>
       <p class="time">March 19th 2021, 9:25:32 am</p>
     </header>
-    <section class="section-display-book-list">
+    <section class="" id="section-book-list">
       <h1>All Awesome Books</h1>
       <ul class="book-list">
         <!-- Add books -->
       </ul>
     </section>
-    <section class="section-add-book">
+    <section class="hidden" id="section-add-book">
       <h2>Add a new book</h2>
       <form action="#">
         <input type="text" placeholder="Title" class="title" />
@@ -33,7 +33,7 @@
         <button type="submit">Add</button>
       </form>
     </section>
-    <section class="section-contact-information">
+    <section class="hidden" id="section-contact-info">
       <h2>Contact Information</h2>
       <p>
         Do have any questions or you just want to say "Hello"?

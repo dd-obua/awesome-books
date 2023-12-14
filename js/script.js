@@ -3,6 +3,12 @@ class Book {
   _inputAuthor = this._select('.author');
   _btnSubmit = this._select("button[type='submit']");
   _bookListElem = this._select('.book-list');
+
+  _sectionSpecifier = this._select('.section-selector');
+  _sectionBookList = this._select('.section-book-list');
+  _sectionAddBook = this._select('.section-add-book');
+  _sectionContactInfo = this._select('.section-contact-info');
+
   _bookList = JSON.parse(localStorage.getItem('books')) || [];
 
   constructor() {
@@ -16,10 +22,16 @@ class Book {
     });
 
     this._btnSubmit.addEventListener('click', this._addNewBook.bind(this));
+
+    this._sectionSpecifier.addEventListener('click', this._switchDisplay.bind(this));
   }
 
   _select(selector) {
     return document.querySelector(selector);
+  }
+
+  _selectAll(selector) {
+    return document.querySelectorAll(selector);
   }
 
   _alreadyAdded() {
@@ -76,6 +88,19 @@ class Book {
       .join('');
     this._bookListElem.innerHTML = '';
     this._bookListElem.insertAdjacentHTML('beforeend', listMarkup);
+  }
+
+  _removeSections() {
+    return this._selectAll('section').forEach((section) => section.classList.add('hidden'));
+  }
+
+  _switchDisplay(event) {
+    event.preventDefault();
+    const link = event.target.closest('li');
+    if (!link) return;
+    const id = link.firstElementChild.getAttribute('href');
+    this._removeSections();
+    this._select(id).classList.remove('hidden');
   }
 }
 

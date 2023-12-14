@@ -83,7 +83,7 @@ input {
   font-size: 1.5rem;
 }
 
-.section-contact-information {
+#section-contact-info {
   width: 40%;
   margin: 0 auto;
 }
@@ -119,11 +119,11 @@ nav ul li:not(:last-child) {
   right: 2.4rem;
 }
 
-.section-contact-information h2 {
+#section-contact-info h2 {
   margin-bottom: 2.4rem;
 }
 
-.section-contact-information ul {
+#section-contact-info ul {
   margin-left: 3.6rem;
   font-style: normal;
 }
@@ -132,4 +132,11 @@ footer {
   border: 2px solid #333;
   padding: 1.2rem;
   margin-top: 2.4rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
 }
