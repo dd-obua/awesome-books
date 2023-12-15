@@ -1,0 +1,23 @@
+{
+  "name": "awesome-books",
+  "version": "1.0.0",
+  "description": "Awesome books",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dd-obua/awesome-books.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dd-obua/awesome-books/issues"
+  },
+  "homepage": "https://github.com/dd-obua/awesome-books#readme",
+  "dependencies": {
+    "luxon": "^3.4.4"
+  }
+}
