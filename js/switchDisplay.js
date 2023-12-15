@@ -1,4 +1,4 @@
-import { select, selectAll } from './selectElements.js';
+import { select, selectAll } from './domUtils.js  ';
 
 const removeSections = () => {
   return selectAll('section').forEach((section) => section.classList.add('hidden'));

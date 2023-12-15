@@ -1,6 +1,9 @@
 import { selectElements } from './selectElements.js';
 import { displayBookList } from './displayBookList.js';
-export const bookList = JSON.parse(localStorage.getItem('books')) || [];
+import { updateStorage } from './helper .js';
+
+export const initializeBookList = () => JSON.parse(localStorage.getItem('books')) || [];
+export const bookList = initializeBookList();
 
 const { inputTitle, inputAuthor } = selectElements();
 
@@ -26,7 +29,7 @@ export const addNewBook = () => {
     if (empty) throw new Error('Both title and author cannot be empty.');
     if (alreadyAdded()) throw new Error('Book already added.');
     bookList.push({ title: inputTitle.value, author: inputAuthor.value });
-    localStorage.setItem('books', JSON.stringify(bookList));
+    updateStorage('books', bookList);
     displayBookList(bookList);
   } catch (error) {
     alert(error);

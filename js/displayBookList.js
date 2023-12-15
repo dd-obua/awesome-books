@@ -1,7 +1,7 @@
 import { selectElements } from './selectElements.js';
-import { bookList } from './addNewBook.js';
 
 const { bookListElem } = selectElements();
+
 const clearContent = () => (bookListElem.innerHTML = '');
 
 export const displayBookList = (list) => {
