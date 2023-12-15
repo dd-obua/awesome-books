@@ -1,11 +1,11 @@
 import { bookList } from './addNewBook.js';
-import { displayBookList } from './displayBookList.js';
 import { updateStorage } from './helper .js';
+import books from './displayBookList.js';
 
 const removeBook = (index) => {
   bookList.splice(index, 1);
   updateStorage('books', bookList);
-  displayBookList(bookList);
+  books.displayBookList(bookList);
 };
 
 export const removeBookUI = (event) => {
