@@ -1,9 +1,9 @@
-import { displayTime } from './displayTime.js';
-import { selectElements } from './selectElements.js';
-import { initializeBookList, addNewBook } from './addNewBook.js';
-import { removeBookUI } from './removeBook.js';
-import books from './displayBookList.js';
-import display from './switchDisplay.js';
+import { displayTime } from './modules/displayTime.js';
+import { selectElements } from './modules/selectElements.js';
+import { initializeBookList, addNewBook } from './modules/addNewBook.js';
+import { removeBookUI } from './modules/removeBook.js';
+import books from './modules/displayBookList.js';
+import display from './modules/switchDisplay.js';
 
 const { btnSubmit, bookListElem, sectionSpecifier, timeContainer } = selectElements();
 const bookList = initializeBookList();
