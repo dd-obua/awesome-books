@@ -6,7 +6,9 @@ class Display {
   }
 
   _removeSections() {
-    return selectAll('section').forEach((section) => section.classList.add('hidden'));
+    return selectAll('section').forEach((section) =>
+      section.classList.add('hidden')
+    );
   }
 
   switchDisplay(event) {

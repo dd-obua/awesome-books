@@ -5,7 +5,8 @@ import { removeBookUI } from './modules/removeBook.js';
 import books from './modules/displayBookList.js';
 import display from './modules/switchDisplay.js';
 
-const { btnSubmit, bookListElem, sectionSpecifier, timeContainer } = selectElements();
+const { btnSubmit, bookListElem, sectionSpecifier, timeContainer } =
+  selectElements();
 const bookList = initializeBookList();
 
 books.displayBookList(bookList);

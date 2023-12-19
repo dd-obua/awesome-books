@@ -2,7 +2,10 @@ import { selectElements } from './selectElements.js';
 import { updateStorage } from './helper .js';
 import books from './displayBookList.js';
 
-export const initializeBookList = () => JSON.parse(localStorage.getItem('books')) || [];
+export const initializeBookList = () => {
+  return JSON.parse(localStorage.getItem('books')) || [];
+};
+
 export const bookList = initializeBookList();
 
 const { inputTitle, inputAuthor } = selectElements();

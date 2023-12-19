@@ -8,5 +8,12 @@ export const selectElements = () => {
   const sectionSpecifier = select('.section-selector');
   const timeContainer = select('.time');
 
-  return { inputTitle, inputAuthor, btnSubmit, bookListElem, sectionSpecifier, timeContainer };
+  return {
+    inputTitle,
+    inputAuthor,
+    btnSubmit,
+    bookListElem,
+    sectionSpecifier,
+    timeContainer,
+  };
 };
